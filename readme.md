@@ -14,9 +14,10 @@ ffmpeg -txt_format text -i movie.mkv out.srt
 
 To use, simply launch `node r.js` as you simultaneously launch your own video player. The two processes aren't linked and there's no support for pause, rewind or other luxuries.
 
-## Known bugs
+## Known bugs and limitations
 * Some phrases are not converted to audio by Google. Not really sure why after trying a few combinations
 * Sometimes the audios overlap
+* The `.srt` parser is hand-coded and very basic but works well with output from ffmpeg
 
 ## Roadmap
 * Support for local `TTS` (festival, etc.)
