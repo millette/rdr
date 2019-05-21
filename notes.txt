@@ -1,3 +1,0 @@
-ffmpeg -txt_format text -i The.Rain.S02E04.480p.x264-mSD.mkv out.srt
-gtts-cli "Where should we go?" -o mp3-1.mp3
-
