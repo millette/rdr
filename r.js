@@ -57,7 +57,7 @@ const save = ({s, ts, i, l}) => {
   const to = ts - (Date.now() - start) + l * 2000
   console.error('Doing', i, fc.length, s)
   setTimeout(() => {
-    console.error('PLAY', ts, fn, str)
+    console.error('PLAY', s, fn, str)
     // TODO: desktop notification
     child_process.exec(`notify-send --expire-time=5000 --urgency=critical -- "${str}"`)
     // FIXME: make mp3 player configurable
