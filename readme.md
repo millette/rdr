@@ -13,3 +13,12 @@ ffmpeg -txt_format text -i movie.mkv out.srt
 ```
 
 To use, simply launch `node r.js` as you simultaneously launch your own video player. The two processes aren't linked and there's no support for pause, rewind or other luxuries.
+
+## Known bugs
+* Some phrases are not converted to audio by Google. Not really sure why after trying a few combinations
+* Sometimes the audios overlap
+
+## Roadmap
+* Support for local `TTS` (festival, etc.)
+* Support for configurable `mp3 player`
+* Options for subtitles filename, etc.

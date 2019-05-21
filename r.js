@@ -58,7 +58,6 @@ const save = ({s, ts, i, l}) => {
   console.error('Doing', i, fc.length, s)
   setTimeout(() => {
     console.error('PLAY', s, fn, str)
-    // TODO: desktop notification
     child_process.exec(`notify-send --expire-time=5000 --urgency=critical -- "${str}"`)
     // FIXME: make mp3 player configurable
     if (!NOTIF_ONLY) child_process.exec(`play ${fn}`)
