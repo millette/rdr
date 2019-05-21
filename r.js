@@ -1,6 +1,7 @@
 'use strict'
 
 // TODO: make it a web app (client-side js)
+// TODO: play, pause, rewind...
 
 // core
 const fs = require('fs')
@@ -28,12 +29,9 @@ const pp = (c) => {
   const [n, t, ...linesB] = c.split('\n')
   const [s, e] = t.split(' --> ')
   let lines = linesB.map((s) => s.trim())
+  // FIXME: support 3 lines or more
   if (lines.length > 2) throw new Error('Too many lines!')
-
-  if ((lines.length === 2) && (lines[1][0] !== '-')) {
-    lines = [lines.join(' ')]
-  }
-
+  if ((lines.length === 2) && (lines[1][0] !== '-')) lines = [lines.join(' ')]
   /*
   // TODO: strip first "-" ?
   lines = lines.map((a) => {
@@ -41,7 +39,6 @@ const pp = (c) => {
     return a.slice(1)
   })
   */
-
   return { n: parseInt(n, 10), s, e, lines }
 }
 
@@ -56,9 +53,8 @@ const save = ({s, ts, i, l}) => {
   const fn = `rep-${i}-${l}.mp3`
   const str = fc[i].lines[l]
   vid = (vid + 1) % voices.length
-  const t = Date.now()
   // FIXME: sometimes the audios overlap
-  const to = ts - (t - start) + l * 2000
+  const to = ts - (Date.now() - start) + l * 2000
   console.error('Doing', i, fc.length, s)
   setTimeout(() => {
     console.error('PLAY', ts, fn, str)
@@ -70,6 +66,7 @@ const save = ({s, ts, i, l}) => {
   if (NOTIF_ONLY) return Promise.resolve()
   if (fs.existsSync(fn)) return Promise.resolve()
   return delay(300)
+    // TODO: don't request the same phrases more than once
     // FIXME: some responses are empty (0 size)
     // FIXME: make tts configurable
     .then(() => new gTTS(str, voices[vid]).save(fn))
