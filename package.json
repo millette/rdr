@@ -2,9 +2,17 @@
   "name": "rdr",
   "version": "0.0.0",
   "license": "AGPL-3.0",
+  "author": {
+    "name": "Robin Millette",
+    "email": "robin@millette.info",
+    "url": "http://robin.millette.info"
+  },
+  "engines": {
+    "node": ">= 10.16.0"
+  },
   "dependencies": {
-    "delay": "^4.2.0",
+    "delay": "^4.3.0",
     "gtts.js": "^1.0.1",
-    "p-map": "^2.1.0"
+    "p-map": "^3.0.0"
   }
 }
